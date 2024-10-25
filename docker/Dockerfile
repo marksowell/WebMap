@@ -20,9 +20,9 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Install dependencies
+# Install dependencies, including python3-venv
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
-    python3 python3-pip curl wget git wkhtmltopdf libssl-dev vim nmap tzdata
+    python3 python3-pip python3-venv curl wget git wkhtmltopdf libssl-dev vim nmap tzdata
 
 # Set up directories and download wkhtmltopdf
 RUN mkdir /opt/xml && mkdir /opt/notes && \
@@ -32,9 +32,6 @@ RUN mkdir /opt/xml && mkdir /opt/notes && \
 # Install Python packages using a virtual environment to avoid system restrictions
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install Django requests xmltodict
-
-# Uncomment the next line if you prefer to install without a virtual environment
-# RUN pip3 install Django requests xmltodict --break-system-packages
 
 # Add the virtual environment to PATH
 ENV PATH="/opt/venv/bin:$PATH"

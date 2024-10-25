@@ -84,3 +84,6 @@ target/
 
 # webmap PDF report
 static/*.pdf
+
+# data directory
+data/

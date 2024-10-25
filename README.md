@@ -25,6 +25,31 @@ A Web Dashbord for Nmap XML Report
 <br>
 
 ## Usage
+
+** UPDATE **
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/marksowell/WebMap.git
+   cd WebMap
+   ```
+2. Create the data directory and place your Nmap scan XML files in the data directory:
+   ```bash
+   mkdir data
+   ```
+   Move any nmap xml files to data directory.
+3. Build and run the Docker container:
+   ```bash
+   docker build -t webmap:latest -f docker/Dockerfile .\n
+   docker run -d --name WebMap -v "$(pwd)/data:/opt/xml" -p 8000:8000 webmap:latest
+   ```
+4. Get token for login:
+   ```bash
+   docker exec -ti WebMap /root/token
+   ```
+
+
+** Old **
+
 You should use this with docker, just by sending this command:
 ```bash
 $ mkdir /tmp/webmap
